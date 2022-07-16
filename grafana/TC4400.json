@@ -1,60 +1,47 @@
 {
-  "__inputs": [
-    {
-      "name" : "inputDS",
-      "datasource": "-- Grafana --",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.3.5"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "description": "DOCSIS Cable Modem",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 1,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource" : "${inputDS}",
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {},
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -63,6 +50,7 @@
         "x": 0,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 4,
       "legend": {
         "alignAsTable": true,
@@ -79,9 +67,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.0.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -91,6 +80,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "tc4400_downstream_snr_threshold_db",
           "instant": true,
           "legendFormat": "{{channel}}",
@@ -98,9 +90,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Receive SNR/MER Threshold Value",
       "tooltip": {
         "shared": false,
@@ -109,9 +99,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -119,31 +107,27 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:90",
           "decimals": 1,
           "format": "dB",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:91",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource" : "${inputDS}",
       "columns": [],
+      "datasource": {},
       "fontSize": "100%",
       "gridPos": {
         "h": 14,
@@ -152,8 +136,6 @@
         "y": 0
       },
       "id": 15,
-      "options": {},
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -163,13 +145,14 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "hidden"
         },
         {
           "alias": "Channel ID",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -185,6 +168,7 @@
         },
         {
           "alias": "Locked",
+          "align": "auto",
           "colorMode": "value",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -214,6 +198,7 @@
         },
         {
           "alias": "Bonded",
+          "align": "auto",
           "colorMode": "value",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -243,7 +228,7 @@
         },
         {
           "alias": "Type",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -259,7 +244,7 @@
         },
         {
           "alias": "",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -275,7 +260,7 @@
         },
         {
           "alias": "Width",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -291,7 +276,7 @@
         },
         {
           "alias": "",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -307,7 +292,7 @@
         },
         {
           "alias": "Modulation",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -323,7 +308,7 @@
         },
         {
           "alias": "Center Frequency",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -339,7 +324,7 @@
         },
         {
           "alias": "",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -354,55 +339,77 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_downstream_center_frequency_hz) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_downstream_locked) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "B"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_downstream_bonded) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "C"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_downstream_channel_type) by (channel,type)",
           "format": "table",
           "instant": true,
           "refId": "D"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_downstream_width_hz) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "E"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_downstream_modulation) by (channel,modulation)",
           "format": "table",
           "instant": true,
           "refId": "F"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Downstream Channel Status",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
-      "datasource" : "${inputDS}",
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {},
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -411,6 +418,7 @@
         "x": 0,
         "y": 7
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "alignAsTable": true,
@@ -427,9 +435,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.0.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -439,6 +448,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "tc4400_downstream_receive_level_dbmv",
           "instant": true,
           "legendFormat": "{{channel}}",
@@ -446,9 +458,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Receive Level (dBmV)",
       "tooltip": {
         "shared": false,
@@ -457,9 +467,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -467,34 +475,35 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:177",
           "decimals": 1,
           "format": "dBm",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:178",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource" : "${inputDS}",
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -503,6 +512,7 @@
         "x": 0,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 12,
       "legend": {
         "avg": false,
@@ -517,9 +527,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.0.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -529,6 +540,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "irate(tc4400_downstream_codewords_corrected_total[5m])",
           "format": "time_series",
           "legendFormat": "CH{{channel}}",
@@ -536,9 +550,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Downstream Corrected Codewords",
       "tooltip": {
         "shared": false,
@@ -547,39 +559,33 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:266",
           "decimals": 0,
           "format": "wps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:267",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource" : "${inputDS}",
       "columns": [],
+      "datasource": {},
       "fontSize": "100%",
       "gridPos": {
         "h": 7,
@@ -588,8 +594,6 @@
         "y": 14
       },
       "id": 16,
-      "options": {},
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -599,13 +603,14 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "hidden"
         },
         {
           "alias": "Channel ID",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -621,6 +626,7 @@
         },
         {
           "alias": "Locked",
+          "align": "auto",
           "colorMode": "value",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -650,6 +656,7 @@
         },
         {
           "alias": "Bonded",
+          "align": "auto",
           "colorMode": "value",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -679,7 +686,7 @@
         },
         {
           "alias": "Type",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -695,7 +702,7 @@
         },
         {
           "alias": "",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -711,7 +718,7 @@
         },
         {
           "alias": "Width",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -727,7 +734,7 @@
         },
         {
           "alias": "",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -743,7 +750,7 @@
         },
         {
           "alias": "Modulation",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -759,7 +766,7 @@
         },
         {
           "alias": "Center Frequency",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -775,7 +782,7 @@
         },
         {
           "alias": "",
-          "colorMode": null,
+          "align": "auto",
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -790,54 +797,76 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_upstream_center_frequency_hz) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_upstream_locked) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "B"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_upstream_bonded) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "C"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_upstream_channel_type) by (channel,type)",
           "format": "table",
           "instant": true,
           "refId": "D"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_upstream_width_hz) by (channel)",
           "format": "table",
           "instant": true,
           "refId": "E"
         },
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "avg(tc4400_upstream_modulation) by (channel,modulation)",
           "format": "table",
           "instant": true,
           "refId": "F"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Upstream Channel Status",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
-      "datasource" : "${inputDS}",
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -846,6 +875,7 @@
         "x": 0,
         "y": 21
       },
+      "hiddenSeries": false,
       "id": 11,
       "legend": {
         "avg": false,
@@ -860,9 +890,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.0.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -872,6 +903,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "irate(tc4400_downstream_codewords_unerrored_total[5m])",
           "format": "time_series",
           "legendFormat": "CH{{channel}}",
@@ -879,9 +913,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Downstream Unerrored Codewords",
       "tooltip": {
         "shared": false,
@@ -890,42 +922,42 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:354",
           "decimals": 0,
           "format": "wps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:355",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource" : "${inputDS}",
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -934,6 +966,7 @@
         "x": 7,
         "y": 21
       },
+      "hiddenSeries": false,
       "id": 13,
       "legend": {
         "avg": false,
@@ -948,9 +981,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.0.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -960,6 +994,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "irate(tc4400_downstream_codewords_uncorrectable_total[5m])",
           "format": "time_series",
           "legendFormat": "CH{{channel}}",
@@ -967,9 +1004,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Downstream Uncorrectable Codewords",
       "tooltip": {
         "shared": false,
@@ -978,43 +1013,43 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:438",
           "decimals": 0,
           "format": "wps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:439",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource" : "${inputDS}",
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {},
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1023,6 +1058,7 @@
         "x": 14,
         "y": 21
       },
+      "hiddenSeries": false,
       "id": 3,
       "legend": {
         "alignAsTable": true,
@@ -1039,9 +1075,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.0.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1051,6 +1088,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${inputDS}"
+          },
           "expr": "tc4400_upstream_transmit_level_dbmv",
           "instant": true,
           "legendFormat": "{{channel}}",
@@ -1058,9 +1098,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Transmit Level (dBmV)",
       "tooltip": {
         "shared": false,
@@ -1069,9 +1107,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -1079,31 +1115,27 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:802",
           "decimals": 1,
           "format": "dBm",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:803",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 19,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1129,5 +1161,7 @@
   },
   "timezone": "",
   "title": "TC4400",
-  "version": 29
+  "uid": "fuAkP4g4z",
+  "version": 2,
+  "weekStart": ""
 }
